@@ -25,6 +25,14 @@ docker build -t samr/apache-php-xdebug .
 
 # Run docker
 
+Instead of using expose for the ports, use the hosts network connection. This seems to allow the xdebug connection to be made and respond to.
+
+```
+sudo docker run -d --net=host --name teeshout -e ALLOW_OVERRIDE=true -v $(pwd):/app samr/apache-php-xdebug
+```
+
+Alternatively, if not using xdebug:
+
 Exposing port 80 on localhost, with the local directory connected as the web app. Enable .htaccess files.
 
 ``` sh
